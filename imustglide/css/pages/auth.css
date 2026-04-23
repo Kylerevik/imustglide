@@ -1,0 +1,376 @@
+/* ============================================
+   AUTH.CSS - LOGIN & REGISTER PAGES
+   iMUSTGLIDE Gaming Platform
+   Bootstrap 5 Compatible
+   ============================================ */
+
+/* ============================================
+   LOGIN/REGISTER SECTION
+   ============================================ */
+
+.login-section {
+    min-height: calc(100vh - 400px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.login-container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.login-card {
+    background: rgba(15, 10, 31, 0.8);
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.login-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: #fff;
+}
+
+.login-subtitle {
+    color: #9ca3af;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+/* ============================================
+   FORM STYLES (Bootstrap 5 Compatible)
+   ============================================ */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Bootstrap form-group override */
+.login-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0;
+}
+
+.login-form .form-group label {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Bootstrap form-control override */
+.login-form .form-group input,
+.login-form .form-group input.form-control {
+    background: rgba(30, 27, 75, 0.5) !important;
+    border: 2px solid rgba(168, 85, 247, 0.3) !important;
+    border-radius: 0.75rem !important;
+    padding: 1rem 1.25rem !important;
+    color: #fff !important;
+    font-size: 1rem;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.login-form .form-group input:focus,
+.login-form .form-group input.form-control:focus {
+    outline: none !important;
+    border-color: #a855f7 !important;
+    background: rgba(30, 27, 75, 0.8) !important;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1) !important;
+}
+
+.login-form .form-group input::placeholder {
+    color: #6b7280;
+}
+
+/* Bootstrap input validation states override */
+.login-form .form-group input.is-invalid {
+    border-color: #ef4444 !important;
+}
+
+.login-form .form-group input.is-valid {
+    border-color: #22c55e !important;
+}
+
+/* ============================================
+   SUBMIT BUTTON (Bootstrap 5 Compatible)
+   ============================================ */
+
+.login-submit-btn,
+.login-submit-btn.btn {
+    width: 100%;
+    background: linear-gradient(135deg, #a855f7, #ec4899) !important;
+    border: none !important;
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+    color: #fff !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+}
+
+.login-submit-btn:hover,
+.login-submit-btn.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5) !important;
+    background: linear-gradient(135deg, #a855f7, #ec4899) !important;
+}
+
+.login-submit-btn:active,
+.login-submit-btn.btn:active {
+    transform: translateY(0);
+}
+
+.login-submit-btn:focus,
+.login-submit-btn.btn:focus {
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5) !important;
+}
+
+/* ============================================
+   FORGOT PASSWORD & DIVIDER
+   ============================================ */
+
+.forgot-password {
+    text-align: center;
+    color: #9ca3af;
+    text-decoration: none;
+    display: block;
+    margin-top: 1rem;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.forgot-password:hover {
+    color: #a855f7;
+}
+
+.login-divider {
+    text-align: center;
+    margin-top: 2rem;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.signup-link {
+    color: #a855f7;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.signup-link:hover {
+    color: #ec4899;
+}
+
+/* ============================================
+   ERROR & SUCCESS MESSAGES (Bootstrap Alert Override)
+   ============================================ */
+
+.error-message,
+.error-message.alert {
+    background: rgba(239, 68, 68, 0.2) !important;
+    border: 2px solid #ef4444 !important;
+    color: #fee2e2 !important;
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+    margin-bottom: 1rem !important;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success-message,
+.success-message.alert {
+    background: rgba(34, 197, 94, 0.2) !important;
+    border: 2px solid #22c55e !important;
+    color: #d1fae5 !important;
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+    margin-bottom: 1rem !important;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ============================================
+   USER DROPDOWN (BEJELENTKEZETT ÁLLAPOT)
+   ============================================ */
+
+.user-dropdown {
+    position: relative;
+}
+
+.user-btn {
+    background: rgba(168, 85, 247, 0.2);
+    border: 2px solid #a855f7;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.user-btn:hover {
+    background: #a855f7;
+    transform: translateY(-2px);
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+    background: rgba(15, 10, 31, 0.98);
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    min-width: 180px;
+    display: none;
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.user-dropdown.open .user-dropdown-menu {
+    display: block;
+    animation: dropdownFade 0.25s ease;
+}
+
+.user-dropdown-item {
+    padding: 0.75rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.user-dropdown-item:hover {
+    background: rgba(168, 85, 247, 0.3);
+    color: #fff;
+}
+
+/* Dropdown divider */
+.user-dropdown-divider {
+    height: 1px;
+    background: rgba(168, 85, 247, 0.2);
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (Bootstrap Breakpoints)
+   ============================================ */
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .login-section {
+        padding: 2rem 1rem;
+        min-height: calc(100vh - 300px);
+    }
+    
+    .login-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .login-title {
+        font-size: 1.75rem;
+    }
+    
+    .login-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .login-form .form-group input,
+    .login-form .form-group input.form-control {
+        padding: 0.875rem 1rem !important;
+        font-size: 0.95rem;
+    }
+    
+    .login-submit-btn,
+    .login-submit-btn.btn {
+        font-size: 1rem;
+        padding: 0.875rem !important;
+    }
+}
+
+/* Small devices (phones, 576px and down) */
+@media (max-width: 576px) {
+    .login-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .login-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .login-title {
+        font-size: 1.5rem;
+    }
+    
+    .login-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .login-form .form-group input,
+    .login-form .form-group input.form-control {
+        padding: 0.75rem 0.875rem !important;
+        font-size: 0.9rem;
+    }
+    
+    .login-submit-btn,
+    .login-submit-btn.btn {
+        font-size: 0.95rem;
+        padding: 0.75rem !important;
+    }
+    
+    .login-divider {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 1.25rem 0.875rem;
+    }
+    
+    .login-title {
+        font-size: 1.35rem;
+    }
+}

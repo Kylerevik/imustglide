@@ -1,0 +1,181 @@
+/* ============================================
+   LOL-SMURFS.CSS
+   ============================================ */
+
+/* ============================================
+   REASONS SECTION
+   ============================================ */
+.smurfs-reasons {
+    padding: 3rem 2rem;
+}
+
+.smurfs-reasons-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 1.25rem;
+    padding: 3rem;
+    background: rgba(15, 10, 40, 0.6);
+    text-align: center;
+}
+
+.smurfs-reasons-tag {
+    font-size: 0.85rem;
+    color: #a855f7;
+    margin: 0 0 0.5rem 0;
+}
+
+.smurfs-reasons-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 3rem 0;
+}
+
+.smurfs-reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+    text-align: center;
+}
+
+.smurfs-reason-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+}
+
+.smurfs-reason-line {
+    width: 40px;
+    height: 3px;
+    background: #a855f7;
+    margin: 0 auto 1rem;
+    border-radius: 2px;
+}
+
+.smurfs-reason-item p {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ============================================
+   UNLEASH SECTION
+   ============================================ */
+.smurfs-unleash {
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.smurfs-unleash-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.smurfs-unleash-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* Last row: 2 cards centered */
+.smurfs-unleash-grid .smurfs-unleash-card:nth-child(4) {
+    grid-column: 1 / 2;
+}
+.smurfs-unleash-grid .smurfs-unleash-card:nth-child(5) {
+    grid-column: 2 / 3;
+}
+
+.smurfs-unleash-card {
+    background: rgba(20, 17, 45, 0.8);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+}
+
+.smurfs-unleash-card:hover {
+    border-color: rgba(168, 85, 247, 0.35);
+}
+
+.smurfs-unleash-num {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+}
+
+.smurfs-unleash-num span {
+    width: 28px;
+    height: 28px;
+    background: rgba(168, 85, 247, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #a855f7;
+    flex-shrink: 0;
+}
+
+.smurfs-unleash-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.4;
+}
+
+.smurfs-unleash-text {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin: 0 0 0.75rem 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.smurfs-unleash-text.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.smurfs-read-more {
+    background: none;
+    border: none;
+    color: #a855f7;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.2s;
+}
+.smurfs-read-more:hover { color: #c084fc; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .smurfs-reasons-grid { grid-template-columns: repeat(2, 1fr); }
+    .smurfs-unleash-grid { grid-template-columns: repeat(2, 1fr); }
+    .smurfs-unleash-grid .smurfs-unleash-card:nth-child(4),
+    .smurfs-unleash-grid .smurfs-unleash-card:nth-child(5) { grid-column: auto; }
+}
+
+@media (max-width: 640px) {
+    .smurfs-reasons-grid { grid-template-columns: 1fr; }
+    .smurfs-unleash-grid { grid-template-columns: 1fr; }
+    .smurfs-reasons-inner { padding: 2rem 1.25rem; }
+}
