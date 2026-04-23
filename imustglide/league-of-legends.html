@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="pics/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends Boosting, Coaching & Accounts - iMUSTGLIDE</title>
+    
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- iMUSTGLIDE CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/lol-page.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="pics/temp-logo.png" alt="iMUSTGLIDE Logo">
+        </a>
+            <div class="nav-menu">
+                <div class="nav-item dropdown" id="gameDropdown">
+                    <span class="dropdown-toggle">Choose Game ▼</span>
+
+                    <div class="dropdown-menu">
+                        <!-- Game Item -->
+                        <a href="league-of-legends.html" class="dropdown-game">
+                            <img src="pics/league-of-legends.png" alt="League of Legends">
+                            <span class="badge discount">20% Off</span>
+                        </a>
+
+                        <div class="dropdown-game coming-soon">
+                            <span class="coming-soon-badge">Soon</span>
+                            <img src="pics/rocket-league.png" alt="Rocket League">
+                        </div>
+
+                        <div class="dropdown-game coming-soon">
+                            <span class="coming-soon-badge">Soon</span>
+                            <img src="pics/clash-royale.png" alt="Clash Royale">
+                        </div>
+
+                        <div class="dropdown-game coming-soon">
+                            <span class="coming-soon-badge">Soon</span>
+                            <img src="pics/rainbow-six-siege.png" alt="Rainbow Six Siege">
+                        </div>
+
+                        <div class="dropdown-game coming-soon">
+                            <span class="coming-soon-badge">Soon</span>
+                            <img src="pics/fortnite.png" alt="Fortnite">
+                        </div>
+
+                        <div class="dropdown-game coming-soon">
+                            <span class="coming-soon-badge">Soon</span>
+                            <img src="pics/valorant.png" alt="Valorant">
+                        </div>
+
+                        <div class="dropdown-game coming-soon">
+                            <span class="coming-soon-badge">Soon</span>
+                            <img src="pics/counter-strike-2.png" alt="Counter-Strike 2">
+                        </div>
+
+                        <div class="dropdown-game coming-soon">
+                            <span class="coming-soon-badge">Soon</span>
+                            <img src="pics/dota-2.png" alt="Dota 2">
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="nav-item" onclick="openComingSoon('Lootboxes'); return false;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;">
+                        <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67l-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1s-1-.45-1-1s.45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1s-1-.45-1-1s.45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12L12 7.4l3.38 4.6L17 10.83L14.92 8H20v6z"/>
+                    </svg>
+                    Lootboxes
+                </a>
+                <a href="#" class="nav-item" onclick="openComingSoon('Affiliate Program'); return false;">Affiliate Program</a>
+                <a href="blog.html" class="nav-item">Blog</a>
+                <a href="#" class="nav-item" onclick="openComingSoon('Discord Server'); return false;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    Discord Server
+                </a>
+            </div>
+            <div class="nav-right">
+                <button class="currency-btn" id="openCurrencyModal">EUR | EN (€)</button>
+                <div class="cart-wrapper" id="cartWrapper">
+                    <button class="cart-nav-btn" onclick="toggleCart(event)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 5.9 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 23.45 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+                    </button>
+                    <div class="cart-dropdown" id="cartDropdown">
+                        <div class="cart-dropdown-header">
+                            <span>EUR | EN (€)</span>
+                            <button class="cart-close-btn" onclick="toggleCart(event)">✕</button>
+                        </div>
+                        <div class="cart-items-list" id="cartItemsList"></div>
+                        <div class="cart-footer">
+                            <div class="cart-total-row">
+                                <span>Total</span>
+                                <span id="cartTotal">€0.00EUR</span>
+                            </div>
+                            <button class="cart-checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="login-btn">Login →</button>
+            </div>
+        </div>  
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="lol-hero">
+        <div class="lol-hero-container">
+            <div class="lol-hero-content">
+                <h1 class="lol-hero-title">League of Legends</h1>
+                <p class="lol-hero-subtitle">Buy League of Legends Boosting, Coaching, Accounts & more.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="lol-services">
+        <div class="lol-services-container">
+            <!-- Tab Navigation -->
+            <!-- Tab Section with Navigation -->
+            <div class="lol-tabs-section">
+                <div class="lol-tabs">
+                    <button class="lol-tab active" data-tab="boosting">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        Boosting
+                    </button>
+                    <button class="lol-tab" data-tab="accounts">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        Accounts
+                    </button>
+                    <button class="lol-tab" data-tab="coaching">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                        </svg>
+                        Coaching
+                    </button>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" id="prevBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" id="nextBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="lol-tab-content active" id="boosting">
+                <div class="service-grid">
+                    <!-- Rank Boost -->
+                    <a href="lol-boosting.html?boost=rank-boost" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/rankboost.png" alt="Rank Boost">
+                        </div>
+                        <h3 class="service-title">Rank Boost</h3>
+                        <p class="service-description">Professional player will get you to your desired rank.</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€4.22</span>
+                        </div>
+                    </a>
+
+                    <!-- Win Boost -->
+                    <a href="lol-boosting.html?boost=win-boost" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/winboost.png" alt="Win Boost">
+                        </div>
+                        <h3 class="service-title">Win Boost</h3>
+                        <p class="service-description">Boost Your MMR with secured wins!</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€1.97</span>
+                        </div>
+                    </a>
+
+                    <!-- Placement Boost -->
+                    <a href="lol-boosting.html?boost=placement-boost" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/placementboost.png" alt="Placement Boost">
+                        </div>
+                        <h3 class="service-title">Placement Boost</h3>
+                        <p class="service-description">Start your new account with the highest MMR!</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€1.99</span>
+                        </div>
+                    </a>
+
+                    <!-- Restriction Removal -->
+                    <a href="lol-boosting.html?boost=restriction-removal" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/restrictionremoval.png" alt="Restriction Removal">
+                        </div>
+                        <h3 class="service-title">Restriction Removal</h3>
+                        <p class="service-description">Get your ranked restriction removed!</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€1.99</span>
+                        </div>
+                    </a>
+
+                    <!-- Battle Pass Boost -->
+                    <a href="lol-boosting.html?boost=battle-pass" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/battlepassboost.png" alt="Battle Pass Boost">
+                        </div>
+                        <h3 class="service-title">Battle Pass Boost</h3>
+                        <p class="service-description">Let us boost your battle pass and get the rewards for you!</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€1.50</span>
+                        </div>
+                    </a>
+
+                    <!-- Arena Win Boost -->
+                    <a href="lol-boosting.html?boost=arena-boost" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/arenawinboost.png" alt="Arena Win Boost">
+                        </div>
+                        <h3 class="service-title">Arena Win Boost</h3>
+                        <p class="service-description">Get your desired arena rank with secured wins!</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€2.99</span>
+                        </div>
+                    </a>
+
+                    <!-- Champion Mastery -->
+                    <a href="lol-boosting.html?boost=champion-mastery" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/championmastery.png" alt="Champion Mastery">
+                        </div>
+                        <h3 class="service-title">Champion Mastery</h3>
+                        <p class="service-description">Get the highest mastery tier you can get on your main champion!</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€7.15</span>
+                        </div>
+                    </a>
+
+                    <!-- Hire Pro Teammate -->
+                    <div class="service-card coming-soon">
+                        <span class="coming-soon-badge">Coming Soon!</span>
+                        <div class="service-icon">
+                            <img src="pics/hireproteammate.png" alt="Hire Pro Teammate">
+                        </div>
+                        <h3 class="service-title">Hire Pro Teammate</h3>
+                        <p class="service-description">Rank Up with a Professional Player!</p>
+                        <div class="service-price">
+                            <span class="price-label">From</span>
+                            <span class="price-value">€3.99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lol-tab-content" id="accounts">
+                <div class="service-grid">
+                    <!-- League of Legends Smurfs -->
+                    <a href="lol-smurfs.html" class="service-card">
+                        <div class="service-icon">
+                            <img src="pics/leagueoflegendssmurf.png" alt="LoL Smurfs">
+                        </div>
+                        <h3 class="service-title">League of Legends Smurfs</h3>
+                        <p class="service-description">High Quality, Lifetime warranty</p>
+                    </a>
+
+                    <!-- LoL Skin Accounts -->
+                    <div class="service-card coming-soon">
+                        <span class="coming-soon-badge">Coming Soon!</span>
+                        <div class="service-icon">
+                            <img src="pics/lolskinaccounts.png" alt="LoL Skin Accounts">
+                        </div>
+                        <h3 class="service-title">LoL Skin Accounts</h3>
+                        <p class="service-description">Account + Skin of your choice</p>
+                    </div>
+
+                    <!-- LoL Ranked Accounts -->
+                    <div class="service-card coming-soon">
+                        <span class="coming-soon-badge">Coming Soon!</span>
+                        <div class="service-icon">
+                            <img src="pics/lolrankedaccounts.png" alt="LoL Ranked Accounts">
+                        </div>
+                        <h3 class="service-title">LoL Ranked Accounts</h3>
+                        <p class="service-description">High Rank, Rare Skins & More</p>
+                    </div>
+
+                    <!-- Handleveled Accounts -->
+                    <div class="service-card coming-soon">
+                        <span class="coming-soon-badge">Coming Soon!</span>
+                        <div class="service-icon">
+                            <img src="pics/handlevededaccounts.png" alt="Handleveled Accounts">
+                        </div>
+                        <h3 class="service-title">Handleveled Accounts</h3>
+                        <p class="service-description">Leveled by Professionals</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lol-tab-content" id="coaching">
+                <div class="service-grid">
+                    <!-- Pro Coaching -->
+                    <a href="lol-coaching.html" class="service-card" style="text-decoration:none;">
+                        <div class="service-icon">
+                            <img src="pics/procoaching.png" alt="Pro Coaching">
+                        </div>
+                        <h3 class="service-title">Pro Coaching</h3>
+                        <p class="service-description">Hire Challenger Coach</p>
+                    </a>
+
+                    <!-- Hire Pro Teammate -->
+                    <div class="service-card coming-soon">
+                        <span class="coming-soon-badge">Coming Soon!</span>
+                        <div class="service-icon">
+                            <img src="pics/hireproteammate.png" alt="Hire Pro Teammate">
+                        </div>
+                        <h3 class="service-title">Hire Pro Teammate</h3>
+                        <p class="service-description">Rank Up with a Professional Player!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy LoL Smurf Accounts Section -->
+    <section class="lol-smurf-accounts">
+        <div class="smurf-container">
+            <h2 class="smurf-title">Buy LoL Smurf Accounts</h2>
+            <p class="smurf-subtitle">Highest quality LoL accounts with lifetime warranty & instant delivery.</p>
+
+            <!-- Server Selector + Navigation -->
+            <div class="server-section-wrapper">
+                <div class="server-selector">
+                    <button class="server-btn active" data-server="EUW">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        EUW
+                    </button>
+                    <button class="server-btn" data-server="EUNE">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        EUNE
+                    </button>
+                    <button class="server-btn" data-server="NA">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        NA
+                    </button>
+                    <button class="server-btn" data-server="OCE">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        OCE
+                    </button>
+                    <button class="server-btn" data-server="LAN">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        LAN
+                    </button>
+                    <button class="server-btn" data-server="LAS">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        LAS
+                    </button>
+                    <button class="server-btn" data-server="BR">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        BR
+                    </button>
+                    <button class="server-btn" data-server="TR">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        TR
+                    </button>
+                    <button class="server-btn" data-server="RU">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        RU
+                    </button>
+                    <button class="server-btn" data-server="MENA">MENA</button>
+                </div>
+
+                <!-- Account Carousel Navigation -->
+                <div class="carousel-nav account-carousel-nav">
+                    <button class="carousel-btn prev" id="accountPrevBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" id="accountNextBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Account Cards - Dynamic Content -->
+            <div class="account-grid" id="accountCardsContainer">
+                <!-- Cards will be dynamically loaded here based on selected server -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaching Section -->
+    <section class="lol-coaching">
+        <div class="coaching-container">
+            <div class="coaching-content">
+                <div class="coaching-text">
+                    <p class="coaching-label">Premium Coaching</p>
+                    <h2 class="coaching-title">Buy Challenger LoL Coaching</h2>
+                    <p class="coaching-description">Our challenger coaches are here to help you reach your full potential. Whether you are looking to improve your mechanics, macro, or mindset, our coaches are here to help you.</p>
+                    
+                    <div class="coaching-tags">
+                        <span class="coaching-tag">Laning Phase</span>
+                        <span class="coaching-tag">Macro</span>
+                        <span class="coaching-tag">Champion pool</span>
+                        <span class="coaching-tag">Mindset</span>
+                    </div>
+                    
+                    <a href="#" class="coaching-link">Learn more about league of legends coaching</a>
+                </div>
+                
+                <div class="coaching-images">
+                    <img src="pics/coach1.png" alt="Coach" class="coach-img">
+                    <img src="pics/coach2.png" alt="Logo" class="coach-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Carousel Section -->
+    <section class="lol-skins">
+        <div class="skins-container">
+            <div class="skins-header-wrapper">
+                <div class="skins-header">
+                    <a href="#" class="skins-title-link">
+                        <h2 class="skins-title">Buy Fresh LoL Account + Skin of your choice 🎨</h2>
+                    </a>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" id="skinPrevBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" id="skinNextBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Skin Cards -->
+            <div class="skin-carousel" id="skinCarousel">
+                <!-- 1. iG Kai'sa - EPIC -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">1</div>
+                    <div class="skin-rarity-badge epic">EPIC</div>
+                    <div class="skin-image">
+                        <img src="pics/igkaisa.png" alt="iG Kai'Sa">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">iG Kai'Sa</h3>
+                        <p class="skin-champion">Kaisa</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 2. Galaxy Slayer Zed - LEGENDARY -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">2</div>
+                    <div class="skin-rarity-badge legendary">LEGENDARY</div>
+                    <div class="skin-image">
+                        <img src="pics/galaxyslayerzed.png" alt="Galaxy Slayer Zed">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Galaxy Slayer Zed</h3>
+                        <p class="skin-champion">Zed</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 3. Crime City Twitch -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">3</div>
+                    <div class="skin-image">
+                        <img src="pics/crimecitytwitch.png" alt="Crime City Twitch">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Crime City Twitch</h3>
+                        <p class="skin-champion">Twitch</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 4. Cosmic Reaver Kassadin - EPIC -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">4</div>
+                    <div class="skin-rarity-badge epic">EPIC</div>
+                    <div class="skin-image">
+                        <img src="pics/cosmicreaverkassadin.png" alt="Cosmic Reaver Kassadin">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Cosmic Reaver Kassadin</h3>
+                        <p class="skin-champion">Kassadin</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 5. Crime City Graves -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">5</div>
+                    <div class="skin-image">
+                        <img src="pics/crimecitygraves.png" alt="Crime City Graves">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Crime City Graves</h3>
+                        <p class="skin-champion">Graves</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 6. Battle Queen Qiyana - EPIC -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">6</div>
+                    <div class="skin-rarity-badge epic">EPIC</div>
+                    <div class="skin-image">
+                        <img src="pics/battlequeenqiyana.png" alt="Battle Queen Qiyana">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Battle Queen Qiyana</h3>
+                        <p class="skin-champion">Qiyana</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 7. Headhunter Rengar -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">7</div>
+                    <div class="skin-image">
+                        <img src="pics/headhunterrengar.png" alt="Headhunter Rengar">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Headhunter Rengar</h3>
+                        <p class="skin-champion">Rengar</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 8. Nightbringer Yasuo - LEGENDARY -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">8</div>
+                    <div class="skin-rarity-badge legendary">LEGENDARY</div>
+                    <div class="skin-image">
+                        <img src="pics/nightbringeryasuo.png" alt="Nightbringer Yasuo">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Nightbringer Yasuo</h3>
+                        <p class="skin-champion">Yasuo</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 9. Gladiator Draven -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">9</div>
+                    <div class="skin-image">
+                        <img src="pics/gladiatordraven.png" alt="Gladiator Draven">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Gladiator Draven</h3>
+                        <p class="skin-champion">Draven</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+
+                <!-- 10. Battle Queen Katarina - LEGENDARY -->
+                <a href="#" class="skin-card">
+                    <div class="skin-number">10</div>
+                    <div class="skin-rarity-badge legendary">LEGENDARY</div>
+                    <div class="skin-image">
+                        <img src="pics/battlequeenkatarina.png" alt="Battle Queen Katarina">
+                    </div>
+                    <div class="skin-info">
+                        <h3 class="skin-name">Battle Queen Katarina</h3>
+                        <p class="skin-champion">Katarina</p>
+                        <p class="skin-rarity">Regular</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="support-container">
+            <div class="support-chat">
+                <div class="chat-header">
+                    <div class="agent-info">
+                        <div class="agent-avatar">K</div>
+                        <div>
+                            <h4>Kassadin</h4>
+                            <p>LiveChat Agent</p>
+                            <span class="online-dot"></span>
+                        </div>
+                    </div>
+                    <span class="chat-time">Just Now</span>
+                </div>
+                <div class="chat-messages">
+                    <div class="message received">
+                        <p>Hello! How can I help you today?</p>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Type a Message...">
+                    <button>▶</button>
+                </div>
+            </div>
+            <div class="support-info">
+                <h2>24/7 support in <span class="highlight">multiple languages</span></h2>
+                <div class="languages">
+                    <span class="lang-tag"><svg width="20" height="14" viewBox="0 0 50 30" fill="none" style="margin-right: 4px; vertical-align: middle; border-radius: 2px; border: 1px solid rgba(255,255,255,0.1);"><rect width="50" height="30" fill="#B22234"/><path d="M0 3.46H50M0 6.92H50M0 10.38H50M0 13.85H50M0 17.31H50M0 20.77H50M0 24.23H50M0 27.69H50" stroke="white" stroke-width="2.31"/><rect width="20" height="12.86" fill="#3C3B6E"/></svg> English</span>
+                    <span class="lang-tag"><svg width="20" height="14" viewBox="0 0 50 30" fill="none" style="margin-right: 4px; vertical-align: middle; border-radius: 2px; border: 1px solid rgba(255,255,255,0.1);"><rect width="50" height="10" fill="#AA151B"/><rect y="10" width="50" height="10" fill="#F1BF00"/><rect y="20" width="50" height="10" fill="#AA151B"/></svg> Spanish</span>
+                    <span class="lang-tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px; vertical-align: middle;"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg> And more!</span>
+                </div>
+                <p class="support-text"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg> Our iMUSTGLIDE support team is available 24/7 to help you with any questions or issues you may have. Get assistance with your orders, accounts, or general inquiries.</p>
+                <div class="support-buttons">
+                    <button class="discord-btn" onclick="openComingSoon('Discord Server')"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg> Join Discord</button>
+                    <button class="help-btn" onclick="openComingSoon('Help Center')"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg> Visit Help Center</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">What is League of Legends Boosting? <span class="faq-icon">+</span></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is League of Legends Coaching? <span class="faq-icon">+</span></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What League of Legends Accounts do you offer? <span class="faq-icon">+</span></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I see the champions and skins before buying LoL accounts? <span class="faq-icon">+</span></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is the warranty on League of Legends Smurf accounts? <span class="faq-icon">+</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <h2 class="blog-title">Blog & News</h2>
+        <p class="blog-subtitle">Posts that make your day light up</p>
+        <div class="blog-cards">
+            <a class="blog-card" href="blog-detail-clash-royale.html" style="text-decoration:none;color:inherit;">
+                <img src="pics/blog-clash-royale.png" alt="Clash Royale Level 15">
+                <div class="blog-content">
+                    <div class="blog-badge">iMUSTGLIDE.GG</div>
+                    <h3>The Best Cards To Upgrade To Level 15 In Clash Royale</h3>
+                    <p>Discover the best cards to upgrade to level 15 in Clash Royale and learn which upgrades deliver the biggest impact in...</p>
+                    <span class="blog-date">2025. 12. 08.</span>
+                </div>
+            </a>
+            <a class="blog-card" href="blog-detail-buy-rp.html" style="text-decoration:none;color:inherit;">
+                <img src="pics/blog-lol-rp.png" alt="Buy LOL RP">
+                <div class="blog-content">
+                    <div class="blog-badge">iMUSTGLIDE.GG</div>
+                    <h3>6 Best Websites To Buy Cheap RP In League of Legends</h3>
+                    <p>Discover the 6 best and safest websites to buy cheap RP in League of Legends, with trusted platforms, fair prices, and...</p>
+                    <span class="blog-date">2025. 12. 08.</span>
+                </div>
+            </a>
+            <a class="blog-card" href="blog-detail-friendlist.html" style="text-decoration:none;color:inherit;">
+                <img src="pics/blog-friendlist.png" alt="Friends List Fix">
+                <div class="blog-content">
+                    <div class="blog-badge">iMUSTGLIDE.GG</div>
+                    <h3>How To Fix League of Legends Friends List Not Loading Issue</h3>
+                    <p>Struggling with your League of Legends friends list not loading? This guide explains the quickest fixes to get your...</p>
+                    <span class="blog-date">2025. 12. 08.</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-services">
+            <button class="service-badge" onclick="window.location.href='accounts.html'"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg> Accounts</button>
+            <button class="service-badge" onclick="window.location.href='boosting.html'"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33 1.26zM11.17 17s3.74-1.55 5.89-3.7c5.4-5.4 4.5-9.62 4.21-10.57-.95-.3-5.17-1.19-10.57 4.21C8.55 9.09 7 12.83 7 12.83l4.17 4.17zm6.48-2.19c-2.29 2.04-5.58 3.44-5.89 3.57L13.31 22l4.05-4.05c.47-.47.68-1.15.55-1.81l-1.26-1.33zM9 18c0 .83-.34 1.58-.88 2.12C6.94 21.3 2 22 2 22s.7-4.94 1.88-6.12C4.42 15.34 5.17 15 6 15c1.66 0 3 1.34 3 3zm4-9c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/></svg>Boosting</button>
+            <button class="service-badge" onclick="openComingSoon('Items')" style="position:relative; opacity:0.7; cursor:default;"><svg width="30" height="24" viewBox="0 0 72 72" fill="currentColor" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; vertical-align: middle;"><path d="M40.3417,46.5421h0a1.9971,1.9971,0,0,0,1.8836,3.5221"/><path d="M51.6174,45.0411a1.997,1.997,0,0,0-1.8836-3.522h0"/><path d="M51.6174,45.0411a22.1726,22.1726,0,0,0-9.3921,5.0231"/><path d="M40.3417,46.5421a22.1724,22.1724,0,0,0,9.3921-5.023"/><path d="M53.674,55.9442a1.997,1.997,0,1,1-3.522,1.8837,88.1683,88.1683,0,0,1-3.8491-10.02L47.477,47.18A88.1637,88.1637,0,0,1,53.674,55.9442Z"/><path d="M28.2657,13.1165a25.7753,25.7753,0,0,1,6.4619,7.5657L46.9194,42.7728A22.4041,22.4041,0,0,1,42.4,45.19L30.7947,22.7856A25.7734,25.7734,0,0,1,28.09,13.2107"/><path d="M29.7747,50.0642a1.9971,1.9971,0,0,0,1.8836-3.5221h0"/><path d="M22.2662,41.5191h0a1.997,1.997,0,1,0-1.8836,3.522"/><path d="M29.7747,50.0642a22.1726,22.1726,0,0,0-9.3921-5.0231"/><path d="M22.2662,41.5191a22.1724,22.1724,0,0,0,9.3921,5.023"/><path d="M37.7047,19.9549a30.83,30.83,0,0,1,6.03-6.8384"/><path d="M34.3432,36.0337,29.6005,45.19a22.4041,22.4041,0,0,1-4.52-2.4173l6.36-11.5234"/><path d="M43.91,13.2107a25.7734,25.7734,0,0,1-2.7051,9.5749l-.9124,1.7576"/><path d="M18.326,55.9442a1.997,1.997,0,1,0,3.522,1.8837,88.1683,88.1683,0,0,0,3.8491-10.02L24.523,47.18A88.1637,88.1637,0,0,0,18.326,55.9442Z"/></svg>Items<span style="position:absolute;top:-8px;right:-6px;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;font-size:0.55rem;font-weight:700;padding:0.15rem 0.45rem;border-radius:2rem;letter-spacing:0.4px;text-transform:uppercase;white-space:nowrap;">Soon</span></button>
+            <button class="service-badge" onclick="openComingSoon('Pro Teammate')" style="position:relative; opacity:0.7; cursor:default;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg> Pro Teammate
+                <span style="position:absolute;top:-8px;right:-6px;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;font-size:0.55rem;font-weight:700;padding:0.15rem 0.45rem;border-radius:2rem;letter-spacing:0.4px;text-transform:uppercase;white-space:nowrap;">Soon</span>
+            </button>
+            <button class="service-badge" onclick="window.location.href='coaching.html'"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg> Coaching</button>
+            <button class="service-badge" onclick="openComingSoon('Currencies')" style="position:relative; opacity:0.7; cursor:default;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg> Currencies<span style="position:absolute;top:-8px;right:-6px;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;font-size:0.55rem;font-weight:700;padding:0.15rem 0.45rem;border-radius:2rem;letter-spacing:0.4px;text-transform:uppercase;white-space:nowrap;">Soon</span></button>
+            <button class="service-badge" onclick="openComingSoon('Top Up')" style="position:relative; opacity:0.7; cursor:default;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></svg> Top Up
+                <span style="position:absolute;top:-8px;right:-6px;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;font-size:0.55rem;font-weight:700;padding:0.15rem 0.45rem;border-radius:2rem;letter-spacing:0.4px;text-transform:uppercase;white-space:nowrap;">Soon</span>
+            </button>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo">
+                        <img src="pics/temp-logo.png" alt="iMUSTGLIDE Logo">
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>    
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer-tagline">The All-In-One Platform for GLIDERS.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> Main</h4>
+                    <a href="#" onclick="openComingSoon('Help Center'); return false;">Help Center</a>
+                    <a href="#" onclick="openComingSoon('Contact Us'); return false;">Contact Us</a>
+                    <a href="#" onclick="openComingSoon('Work With Us'); return false;">Work With Us</a>
+                    <a href="#" onclick="openComingSoon('Become Affiliate'); return false;">Become Affiliate</a>
+                </div>
+                <div class="footer-column">
+                    <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg> Misc</h4>
+                    <a href="blog.html">Blog</a>
+                    <a href="#" onclick="openComingSoon('Definitions'); return false;">Definitions</a>
+                    <a href="#" onclick="openComingSoon('Lootboxes'); return false;">Lootboxes</a>
+                    <a href="#" onclick="openComingSoon('Loyalty Program'); return false;">Loyalty Program</a>
+                </div>
+                <div class="footer-column">
+                    <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg> Need help?</h4>
+                    <p>Our iMUSTGLIDE support team is available 24/7 to help you with any questions or issues you may have.</p>
+                    <p class="support-email"><a href="mailto:support@imustglide.gg">support@imustglide.gg</a></p>
+                    <div class="footer-buttons">
+                        <button class="footer-btn" onclick="openComingSoon('Help Center')"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg> Get Support</button>
+                        <button class="footer-btn discord" onclick="openComingSoon('Discord Server')"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg> Join Discord</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-and-conditions.html">Terms and Conditions</a>
+                <a href="cookie-policy.html">Cookie Policy</a>
+                <a href="dmca.html">DMCA</a>
+            </div>
+            <button class="currency-btn" id="openCurrencyModalFooter">EUR | EN (€)</button>
+        </div>
+
+        <p class="footer-disclaimer">iMUSTGLIDE.gg is not endorsed or affiliated by any game developers or publishers.</p>
+        <p class="footer-copyright">2025 iMUSTGLIDE, All Rights Reserved, Created By chill</p>
+    </footer>
+
+    <!-- Account Purchase Modal -->
+    <div class="account-purchase-modal" id="accountPurchaseModal">
+        <div class="apm-overlay" id="apmOverlay"></div>
+        <div class="apm-content">
+            <button class="apm-close" id="apmClose">✕</button>
+
+            <div class="apm-header">
+                <div class="apm-icon-wrap">
+                    <img id="apm-icon" src="" alt="Account">
+                </div>
+                <h2 id="apm-title"></h2>
+                <div class="apm-info-btn" id="apmInfoBtn">
+                    Required to play normal games first
+                    <div class="apm-info-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        <div class="apm-tooltip">League of Legends requires normal games to be played first before ranked games can be played.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="apm-body">
+                <div class="apm-details">
+                    <div class="apm-row"><span>Blue Essence</span><span id="apm-be"></span></div>
+                    <div class="apm-row"><span>Price Per Account</span><span id="apm-price-per"></span></div>
+                    <div class="apm-row"><span>Region</span><span id="apm-region"></span></div>
+                    <div class="apm-row"><span>Warranty</span><span id="apm-warranty"></span></div>
+                    <div class="apm-row apm-qty-row">
+                        <span>Quantity</span>
+                        <div class="apm-qty-ctrl">
+                            <button class="apm-qty-btn" id="apm-qty-minus">−</button>
+                            <input type="number" id="apm-qty" value="1" min="1" max="10" readonly>
+                            <button class="apm-qty-btn" id="apm-qty-plus">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="apm-addons">
+                    <h3>Addons</h3>
+                    <p>extra services you can add to your account</p>
+                    <div class="apm-addon-row">
+                        <div>
+                            <div class="apm-addon-name">5 Placement Games</div>
+                            <div class="apm-addon-sub">( €2.49 per game)</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" class="toggle-input" id="apm-placement-toggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="apm-footer">
+                <div class="apm-total-row">
+                    <span>Total:</span>
+                    <span id="apm-total">€0.00</span>
+                </div>
+                <div class="apm-buttons">
+                    <button class="apm-cart-btn">Add To Cart</button>
+                    <button class="apm-buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currency Modal (Copy from index.html) -->
+    <div class="currency-modal" id="currencyModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">✕</button>
+            <h2 class="modal-title">Currency & Language Settings</h2>
+            
+            <div class="modal-sections">
+                <div class="modal-section">
+                    <h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px; vertical-align: middle;">
+                            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                        </svg>
+                        Currency
+                    </h3>
+                    <div class="modal-options">
+                        <button class="modal-option" data-currency="EUR" data-symbol="€">EUR (€)</button>
+                        <button class="modal-option" data-currency="USD" data-symbol="$">USD ($)</button>
+                        <button class="modal-option" data-currency="GBP" data-symbol="£">GBP (£)</button>
+                        <button class="modal-option" data-currency="CAD" data-symbol="$">CAD ($)</button>
+                        <button class="modal-option" data-currency="AUD" data-symbol="$">AUD ($)</button>
+                        <button class="modal-option" data-currency="PLN" data-symbol="zł">PLN (zł)</button>
+                        <button class="modal-option" data-currency="CHF" data-symbol="Fr">CHF (Fr)</button>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>🌍 Language</h3>
+                    <div class="modal-options">
+                        <button class="modal-option" data-lang="HU">🇭🇺 Magyar</button>
+                        <button class="modal-option" data-lang="EN">🇬🇧 English</button>
+                        <button class="modal-option" data-lang="DE">🇩🇪 Deutsch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3.2 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="js/navigation.js"></script>
+    <script src="js/currency-modal.js"></script>
+    <script src="js/faq.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+
+    <!-- Cart Toast -->
+    <div class="cart-toast" id="cartToast">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <span class="cart-toast-text">Added to Cart!</span>
+        <button class="cart-toast-close" onclick="this.closest('.cart-toast').classList.remove('show')">✕</button>
+    </div>
+    <script src="js/lol-page.js"></script>
+    <script src="js/lol-server-accounts.js"></script>
+
+    <!-- Session Kezelés -->
+    <script>
+        // Session ellenőrzés és felhasználó megjelenítése
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('api/check_session.php');
+                const data = await response.json();
+                
+                const navRight = document.querySelector('.nav-right');
+                const loginBtn = navRight.querySelector('.login-btn');
+                
+                if (data.logged_in) {
+                    // Felhasználó be van jelentkezve
+                    const username = data.user.first_name || data.user.email.split('@')[0];
+                    
+                    // LOGIN gomb cseréje user dropdown-ra
+                    loginBtn.outerHTML = `
+                        <div class="user-dropdown" id="userDropdown">
+                            <button class="user-btn">
+                                <span>${username}</span>
+                                <span>▼</span>
+                            </button>
+                            <div class="user-dropdown-menu">
+                                <a href="profile.html" class="user-dropdown-item">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Profile
+                                </a>
+                                <div class="user-dropdown-item" onclick="handleLogout()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; vertical-align: middle;"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg> Log out
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Dropdown toggle
+                    const userDropdown = document.getElementById('userDropdown');
+                    const userBtn = userDropdown.querySelector('.user-btn');
+                    
+                    userBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        userDropdown.classList.toggle('open');
+                    });
+                    
+                    // Kívülre kattintásra bezárás
+                    document.addEventListener('click', (e) => {
+                        if (!userDropdown.contains(e.target)) {
+                            userDropdown.classList.remove('open');
+                        }
+                    });
+                } else {
+                    // Nincs bejelentkezve - LOGIN gomb működjön
+                    if (loginBtn) {
+                        loginBtn.addEventListener('click', function() {
+                            window.location.href = 'login.html';
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error('Session check error:', error);
+                // Ha hiba van, a LOGIN gomb átirányítson
+                const loginBtn = document.querySelector('.login-btn');
+                if (loginBtn) {
+                    loginBtn.addEventListener('click', function() {
+                        window.location.href = 'login.html';
+                    });
+                }
+            }
+        });
+
+        // Kijelentkezés kezelése
+        async function handleLogout() {
+            try {
+                const response = await fetch('api/logout.php', {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.error('Logout error:', error);
+                // Ha hiba van, akkor is újratöltjük az oldalt
+                window.location.reload();
+            }
+        }
+    </script>
+
+    <!-- Coming Soon Modal -->
+    <div class="coming-soon-modal" id="comingSoonModal">
+        <div class="coming-soon-overlay" id="comingSoonOverlay"></div>
+        <div class="coming-soon-content">
+            <button class="coming-soon-close" id="closeComingSoonModal">✕</button>
+            <div class="coming-soon-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+            <div class="coming-soon-badge-large">Coming Soon!</div>
+            <h2 class="coming-soon-title" id="comingSoonTitle">Feature</h2>
+            <p class="coming-soon-desc">We're working hard on this feature. Stay tuned — it's going to be worth the wait!</p>
+            <div class="coming-soon-features" id="comingSoonFeatures"></div>
+            <button class="coming-soon-dismiss" id="dismissComingSoon">Got it!</button>
+        </div>
+    </div>
+</body>
+</html>

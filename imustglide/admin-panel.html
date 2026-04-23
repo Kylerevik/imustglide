@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="pics/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - iMUSTGLIDE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/profile.css">
+    <link rel="stylesheet" href="css/pages/admin.css">
+</head>
+<body class="profile-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="pics/temp-logo.png" alt="iMUSTGLIDE">
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-label">Overview</div>
+                <a href="#" class="nav-link active" data-page="dashboard">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-label">Management</div>
+                <a href="#" class="nav-link" data-page="users">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
+                    <span class="nav-text">Users</span>
+                </a>
+                <a href="#" class="nav-link" data-page="orders">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></span>
+                    <span class="nav-text">Orders</span>
+                </a>
+                <a href="#" class="nav-link" data-page="discount-codes">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg></span>
+                    <span class="nav-text">Discount Codes</span>
+                </a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-label">Services</div>
+                <a href="#" class="nav-link" data-page="games">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5S14.67 12 15.5 12s1.5.67 1.5 1.5S16.33 15 15.5 15zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 10 18.5 10s1.5.67 1.5 1.5S19.33 12 18.5 12z"/></svg></span>
+                    <span class="nav-text">Games</span>
+                </a>
+                <a href="#" class="nav-link" data-page="accounts">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg></span>
+                    <span class="nav-text">Accounts</span>
+                </a>
+                <a href="#" class="nav-link" data-page="boosting-services">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.72L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5V2.05z"/></svg></span>
+                    <span class="nav-text">Boosting Prices</span>
+                </a>
+                <a href="#" class="nav-link" data-page="coaching-services">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></span>
+                    <span class="nav-text">Coaching Prices</span>
+                </a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-label">Workers</div>
+                <a href="#" class="nav-link" data-page="boosters">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V6h5v4zm5.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-7h-5V6h5v4z"/></svg></span>
+                    <span class="nav-text">Boosters</span>
+                    <span class="nav-badge" id="boostersBadge" style="display:none;background:#a855f7;color:#fff;font-size:0.65rem;font-weight:700;padding:0.1rem 0.4rem;border-radius:2rem;margin-left:auto;"></span>
+                </a>
+                <a href="#" class="nav-link" data-page="coaches">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></span>
+                    <span class="nav-text">Coaches</span>
+                    <span class="nav-badge" id="coachesBadge" style="display:none;background:#22c55e;color:#fff;font-size:0.65rem;font-weight:700;padding:0.1rem 0.4rem;border-radius:2rem;margin-left:auto;"></span>
+                </a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-label">Account</div>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span>
+                    <span class="nav-text">My Profile</span>
+                </a>
+            </div>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="sidebar-lock-btn" id="sidebarLockBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="lockIcon"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                <span class="lock-text">Lock</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="profile-main">
+
+        <!-- DASHBOARD -->
+        <div class="page-content active" id="page-dashboard">
+            <h1 class="page-greeting">Admin Panel 🛡️</h1>
+
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statTotalUsers">-</div>
+                        <div class="admin-stat-label">Total Users</div>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statTotalOrders">-</div>
+                        <div class="admin-stat-label">Total Orders</div>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statTotalRevenue">-</div>
+                        <div class="admin-stat-label">Total Revenue</div>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon red"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statBannedUsers">-</div>
+                        <div class="admin-stat-label">Banned Users</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="dashboard-card" style="margin-top:2rem;">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Orders</h3>
+                    <a href="#" class="view-details-link" onclick="showPage('orders'); return false;">View All</a>
+                </div>
+                <div class="card-body" style="padding:0;">
+                    <table class="admin-table">
+                        <thead><tr><th>Order #</th><th>User</th><th>Product</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+                        <tbody id="recentOrdersBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Recent Users -->
+            <div class="dashboard-card" style="margin-top:1.5rem;">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Users</h3>
+                    <a href="#" class="view-details-link" onclick="showPage('users'); return false;">View All</a>
+                </div>
+                <div class="card-body" style="padding:0;">
+                    <table class="admin-table">
+                        <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead>
+                        <tbody id="recentUsersBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- USERS PAGE -->
+        <div class="page-content" id="page-users">
+            <div class="page-header-row">
+                <h1 class="page-title">Users</h1>
+                <input type="text" class="admin-search-input" id="usersSearch" placeholder="Search users...">
+            </div>
+
+            <div class="admin-filter-row">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="customer">Customers</button>
+                <button class="filter-btn" data-filter="booster">Boosters</button>
+                <button class="filter-btn" data-filter="coach">Coaches</button>
+                <button class="filter-btn" data-filter="admin">Admins</button>
+                <button class="filter-btn" data-filter="banned">Banned</button>
+            </div>
+
+            <div class="dashboard-card" style="margin-top:1rem;">
+                <div class="card-body" style="padding:0;">
+                    <table class="admin-table">
+                        <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Orders</th><th>Spent</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead>
+                        <tbody id="usersTableBody"><tr><td colspan="8" class="empty-table">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORDERS PAGE -->
+        <div class="page-content" id="page-orders">
+            <div class="page-header-row">
+                <h1 class="page-title">Orders</h1>
+                <input type="text" class="admin-search-input" id="ordersSearch" placeholder="Search orders...">
+            </div>
+
+            <div class="admin-filter-row">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="processing">Processing</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+                <button class="filter-btn" data-filter="refunded">Refunded</button>
+            </div>
+
+            <div class="dashboard-card" style="margin-top:1rem;">
+                <div class="card-body" style="padding:0;">
+                    <table class="admin-table">
+                        <thead><tr><th>Order #</th><th>User</th><th>Product</th><th>Amount</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+                        <tbody id="ordersTableBody"><tr><td colspan="7" class="empty-table">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISCOUNT CODES PAGE -->
+        <div class="page-content" id="page-discount-codes">
+            <div class="page-header-row">
+                <h1 class="page-title">Discount Codes</h1>
+                <button class="admin-btn primary" onclick="openCreateCouponModal()">+ New Code</button>
+            </div>
+
+            <div class="dashboard-card" style="margin-top:1rem;">
+                <div class="card-body" style="padding:0;">
+                    <table class="admin-table">
+                        <thead><tr><th>Code</th><th>Type</th><th>Value</th><th>Used</th><th>Max Uses</th><th>Valid Until</th><th>Status</th><th>Actions</th></tr></thead>
+                        <tbody id="codesTableBody"><tr><td colspan="8" class="empty-table">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAMES PAGE -->
+        <div class="page-content" id="page-games">
+            <h1 class="page-title">Games</h1>
+            <div class="admin-toolbar">
+                <button class="admin-btn" onclick="openAddGameModal()">+ Add Game</button>
+            </div>
+            <table class="admin-table">
+                <thead><tr><th>Name</th><th>Slug</th><th>Active</th><th>Order</th><th>Discount</th><th>Actions</th></tr></thead>
+                <tbody id="gamesTableBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+            </table>
+        </div>
+
+        <!-- ACCOUNTS PAGE -->
+        <div class="page-content" id="page-accounts">
+            <h1 class="page-title">LoL Smurf Accounts</h1>
+            <div class="admin-server-tabs">
+                <button class="server-tab active" onclick="switchServer(this,'EUW')">EUW</button>
+                <button class="server-tab" onclick="switchServer(this,'EUNE')">EUNE</button>
+                <button class="server-tab" onclick="switchServer(this,'NA')">NA</button>
+                <button class="server-tab" onclick="switchServer(this,'TR')">TR</button>
+                <button class="server-tab" onclick="switchServer(this,'RU')">RU</button>
+                <button class="server-tab" onclick="switchServer(this,'BR')">BR</button>
+                <button class="server-tab" onclick="switchServer(this,'LAN')">LAN</button>
+                <button class="server-tab" onclick="switchServer(this,'LAS')">LAS</button>
+                <button class="server-tab" onclick="switchServer(this,'OCE')">OCE</button>
+                <button class="server-tab" onclick="switchServer(this,'MENA')">MENA</button>
+                <button class="admin-btn" style="margin-left:auto;" onclick="openAddAccountModal()">+ Add Type</button>
+            </div>
+            <div class="account-types-grid" id="accountTypesGrid">
+                <div style="color:#6b7280;padding:2rem;text-align:center;">Loading...</div>
+            </div>
+        </div>
+
+        <!-- BOOSTING PRICES PAGE -->
+        <div class="page-content" id="page-boosting-services">
+            <h1 class="page-title">LoL Boosting Prices</h1>
+            <div class="admin-toolbar">
+                <span style="color:#9ca3af;font-size:0.85rem;">Edit prices directly in the table. Changes take effect immediately.</span>
+            </div>
+            <div id="boostingPricesContent">
+                <div class="empty-table" style="padding:2rem;text-align:center;">Loading...</div>
+            </div>
+        </div>
+
+        <!-- COACHING PRICES PAGE -->
+        <div class="page-content" id="page-coaching-services">
+            <h1 class="page-title">LoL Coaching Prices</h1>
+            <table class="admin-table">
+                <thead><tr><th>Service</th><th>Description</th><th>Price</th><th>Unit</th><th>Active</th><th>Actions</th></tr></thead>
+                <tbody id="coachingTableBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+            </table>
+        </div>
+
+    <!-- ============================================
+         BOOSTERS PAGE
+         ============================================ -->
+    <div class="page-content" id="page-boosters">
+        <div class="page-header-row">
+            <h1 class="page-title">Boosters</h1>
+            <button class="admin-btn primary" onclick="loadWorkers('booster')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                Refresh
+            </button>
+        </div>
+
+        <!-- Available orders stat -->
+        <div class="admin-stats-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:1.5rem;">
+            <div class="admin-stat-card">
+                <div class="admin-stat-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.11-.31.18-.65.18-1a3 3 0 00-5.5-1.65l-.5.67-.5-.68A3 3 0 006 5c0 .35.07.69.18 1H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg></div>
+                <div class="admin-stat-info">
+                    <div class="admin-stat-value" id="boosterAvailableCount">-</div>
+                    <div class="admin-stat-label">Available Boost Orders</div>
+                </div>
+            </div>
+            <div class="admin-stat-card">
+                <div class="admin-stat-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+                <div class="admin-stat-info">
+                    <div class="admin-stat-value" id="boosterWorkerCount">-</div>
+                    <div class="admin-stat-label">Total Boosters</div>
+                </div>
+            </div>
+            <div class="admin-stat-card">
+                <div class="admin-stat-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                <div class="admin-stat-info">
+                    <div class="admin-stat-value" id="boosterActiveCount">-</div>
+                    <div class="admin-stat-label">Currently Working</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available orders to assign -->
+        <div class="dashboard-card" style="margin-bottom:1.5rem;">
+            <div class="card-header">
+                <h3 class="card-title">📋 Unassigned Boost Orders</h3>
+                <span style="font-size:0.8rem;color:#6b7280;">Assign these to a booster</span>
+            </div>
+            <div class="card-body" style="padding:0;">
+                <table class="admin-table">
+                    <thead><tr><th>Order #</th><th>Product</th><th>Customer</th><th>Amount</th><th>Date</th><th>Assign To</th></tr></thead>
+                    <tbody id="boosterAvailableOrders"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Boosters list -->
+        <div class="dashboard-card">
+            <div class="card-header"><h3 class="card-title">⚡ All Boosters</h3></div>
+            <div class="card-body" style="padding:0;">
+                <table class="admin-table">
+                    <thead><tr><th>Booster</th><th>In Progress</th><th>Completed</th><th>Earnings</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody id="boostersTableBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         COACHES PAGE
+         ============================================ -->
+    <div class="page-content" id="page-coaches">
+        <div class="page-header-row">
+            <h1 class="page-title">Coaches</h1>
+            <button class="admin-btn primary" onclick="loadWorkers('coach')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                Refresh
+            </button>
+        </div>
+
+        <div class="admin-stats-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:1.5rem;">
+            <div class="admin-stat-card">
+                <div class="admin-stat-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.11-.31.18-.65.18-1a3 3 0 00-5.5-1.65l-.5.67-.5-.68A3 3 0 006 5c0 .35.07.69.18 1H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg></div>
+                <div class="admin-stat-info">
+                    <div class="admin-stat-value" id="coachAvailableCount">-</div>
+                    <div class="admin-stat-label">Available Coach Orders</div>
+                </div>
+            </div>
+            <div class="admin-stat-card">
+                <div class="admin-stat-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+                <div class="admin-stat-info">
+                    <div class="admin-stat-value" id="coachWorkerCount">-</div>
+                    <div class="admin-stat-label">Total Coaches</div>
+                </div>
+            </div>
+            <div class="admin-stat-card">
+                <div class="admin-stat-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                <div class="admin-stat-info">
+                    <div class="admin-stat-value" id="coachActiveCount">-</div>
+                    <div class="admin-stat-label">Currently Working</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-card" style="margin-bottom:1.5rem;">
+            <div class="card-header">
+                <h3 class="card-title">📋 Unassigned Coach Orders</h3>
+                <span style="font-size:0.8rem;color:#6b7280;">Assign these to a coach</span>
+            </div>
+            <div class="card-body" style="padding:0;">
+                <table class="admin-table">
+                    <thead><tr><th>Order #</th><th>Product</th><th>Customer</th><th>Amount</th><th>Date</th><th>Assign To</th></tr></thead>
+                    <tbody id="coachAvailableOrders"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header"><h3 class="card-title">🎓 All Coaches</h3></div>
+            <div class="card-body" style="padding:0;">
+                <table class="admin-table">
+                    <thead><tr><th>Coach</th><th>In Progress</th><th>Completed</th><th>Earnings</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody id="coachesTableBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- Worker Detail Modal -->
+    <div class="admin-modal" id="workerModal">
+        <div class="admin-modal-overlay" onclick="closeWorkerModal()"></div>
+        <div class="admin-modal-content large">
+            <div class="admin-modal-header">
+                <div class="modal-user-avatar" id="workerModalAvatar">?</div>
+                <div>
+                    <h2 id="workerModalName">Worker</h2>
+                    <p id="workerModalEmail" style="color:#9ca3af;font-size:0.9rem;"></p>
+                </div>
+                <button class="admin-modal-close" onclick="closeWorkerModal()">✕</button>
+            </div>
+            <div class="admin-modal-tabs">
+                <button class="admin-tab-btn active" data-wtab="processing">In Progress</button>
+                <button class="admin-tab-btn" data-wtab="completed">Completed</button>
+            </div>
+            <div class="admin-tab-pane active" id="worker-tab-processing" style="padding:0;">
+                <table class="admin-table">
+                    <thead><tr><th>Order #</th><th>Product</th><th>Customer</th><th>Amount</th><th>Claimed</th><th>Action</th></tr></thead>
+                    <tbody id="workerProcessingBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                </table>
+            </div>
+            <div class="admin-tab-pane" id="worker-tab-completed" style="padding:0;">
+                <table class="admin-table">
+                    <thead><tr><th>Order #</th><th>Product</th><th>Customer</th><th>Amount</th><th>Completed</th></tr></thead>
+                    <tbody id="workerCompletedBody"><tr><td colspan="5" class="empty-table">Loading...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         USER DETAIL MODAL
+         ============================================ -->
+    <div class="admin-modal" id="userModal">
+        <div class="admin-modal-overlay" onclick="closeUserModal()"></div>
+        <div class="admin-modal-content" style="max-width:1100px;width:95%;">
+            <div class="admin-modal-header">
+                <div class="modal-user-avatar" id="modalUserAvatar">?</div>
+                <div>
+                    <h2 id="modalUserName">User</h2>
+                    <p id="modalUserEmail" style="color:#9ca3af; font-size:0.9rem;"></p>
+                </div>
+                <button class="admin-modal-close" onclick="closeUserModal()">✕</button>
+            </div>
+
+            <div class="admin-modal-tabs">
+                <button class="admin-tab-btn active" data-tab="info">Info</button>
+                <button class="admin-tab-btn" data-tab="orders">Orders</button>
+                <button class="admin-tab-btn" data-tab="actions">Actions</button>
+            </div>
+
+            <!-- Info Tab -->
+            <div class="admin-tab-pane active" id="modal-tab-info">
+                <div class="modal-info-grid">
+                    <div class="modal-info-item"><label>First Name</label><input type="text" id="editFirstName" class="settings-input"></div>
+                    <div class="modal-info-item"><label>Last Name</label><input type="text" id="editLastName" class="settings-input"></div>
+                    <div class="modal-info-item"><label>Email</label><input type="email" id="editEmail" class="settings-input"></div>
+                    <div class="modal-info-item"><label>Role</label>
+                        <select id="editRole" class="settings-input">
+                            <option value="customer">Customer</option>
+                            <option value="booster">Booster</option>
+                            <option value="coach">Coach</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="modal-info-item"><label>Store Credits (€)</label><input type="number" id="editCredits" class="settings-input" step="0.01" min="0"></div>
+                    <div class="modal-info-item"><label>Loot Points</label><input type="number" id="editLootPoints" class="settings-input" min="0"></div>
+                    <div class="modal-info-item"><label>Discord</label><input type="text" id="editDiscord" class="settings-input"></div>
+                    <div class="modal-info-item"><label>Country</label><input type="text" id="editCountry" class="settings-input"></div>
+                </div>
+                <div id="editUserMsg" style="display:none; margin:1rem 0;"></div>
+                <div style="display:flex; gap:1rem; margin-top:1rem;">
+                    <button class="admin-btn primary" onclick="saveUserEdit()">Save Changes</button>
+                    <button class="admin-btn" onclick="closeUserModal()">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div class="admin-tab-pane" id="modal-tab-orders">
+                <table class="admin-table">
+                    <thead><tr><th>Order #</th><th>Product</th><th>Amount</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+                    <tbody id="modalOrdersBody"><tr><td colspan="6" class="empty-table">Loading...</td></tr></tbody>
+                </table>
+            </div>
+
+            <!-- Actions Tab -->
+            <div class="admin-tab-pane" id="modal-tab-actions">
+                <div class="actions-grid">
+
+                    <!-- Suspend -->
+                    <div class="action-card warning">
+                        <div class="action-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+                        <div class="action-card-info">
+                            <h4>Suspend Account</h4>
+                            <p>Temporarily disable this account</p>
+                            <select id="suspendDuration" class="settings-input" style="margin-top:0.5rem; width:auto;">
+                                <option value="1">1 day</option>
+                                <option value="3">3 days</option>
+                                <option value="7">7 days</option>
+                                <option value="14">14 days</option>
+                                <option value="30">30 days</option>
+                            </select>
+                        </div>
+                        <button class="admin-btn warning" onclick="suspendUser()">Suspend</button>
+                    </div>
+
+                    <!-- Ban -->
+                    <div class="action-card danger">
+                        <div class="action-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-4.42 3.58-8 8-8 1.85 0 3.55.63 4.9 1.68L5.68 16.9C4.63 15.55 4 13.85 4 12zm8 8c-1.85 0-3.55-.63-4.9-1.68L18.32 7.1C19.37 8.45 20 10.15 20 12c0 4.42-3.58 8-8 8z"/></svg></div>
+                        <div class="action-card-info">
+                            <h4>Ban Account</h4>
+                            <p>Permanently ban this user</p>
+                        </div>
+                        <button class="admin-btn danger" onclick="banUser()">Ban</button>
+                    </div>
+
+                    <!-- Unban/Unsuspend -->
+                    <div class="action-card success">
+                        <div class="action-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                        <div class="action-card-info">
+                            <h4>Activate Account</h4>
+                            <p>Restore access to this account</p>
+                        </div>
+                        <button class="admin-btn success" onclick="activateUser()">Activate</button>
+                    </div>
+
+                    <!-- Add Credits -->
+                    <div class="action-card purple">
+                        <div class="action-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+                        <div class="action-card-info">
+                            <h4>Add Store Credits</h4>
+                            <p>Manually add credits to user</p>
+                            <input type="number" id="addCreditsAmount" class="settings-input" placeholder="Amount (€)" step="0.01" min="0" style="margin-top:0.5rem; width:auto;">
+                        </div>
+                        <button class="admin-btn primary" onclick="addCredits()">Add</button>
+                    </div>
+
+                    <!-- Reset Password -->
+                    <div class="action-card blue">
+                        <div class="action-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+                        <div class="action-card-info">
+                            <h4>Reset Password</h4>
+                            <p>Set a new password for this user</p>
+                            <input type="password" id="newUserPassword" class="settings-input" placeholder="New password" style="margin-top:0.5rem; width:auto;">
+                        </div>
+                        <button class="admin-btn" onclick="resetUserPassword()">Reset</button>
+                    </div>
+
+                </div>
+                <div id="actionsMsg" style="display:none; margin-top:1rem;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         ORDER STATUS MODAL
+         ============================================ -->
+    <div class="admin-modal" id="orderModal">
+        <div class="admin-modal-overlay" onclick="closeOrderModal()"></div>
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h2 id="orderModalTitle">Order</h2>
+                <button class="admin-modal-close" onclick="closeOrderModal()">✕</button>
+            </div>
+            <div style="padding:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+                <div class="form-group">
+                    <label>Update Status</label>
+                    <select id="orderStatusSelect" class="settings-input">
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="refunded">Refunded</option>
+                    </select>
+                </div>
+                <div id="orderModalMsg" style="display:none;"></div>
+                <div style="display:flex; gap:1rem;">
+                    <button class="admin-btn primary" onclick="saveOrderStatus()">Save Status</button>
+                    <button class="admin-btn danger" onclick="deleteOrder()">Delete Order</button>
+                    <button class="admin-btn" onclick="closeOrderModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CREATE COUPON MODAL
+         ============================================ -->
+    <div class="admin-modal" id="couponModal">
+        <div class="admin-modal-overlay" onclick="closeCouponModal()"></div>
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h2>Create Discount Code</h2>
+                <button class="admin-modal-close" onclick="closeCouponModal()">✕</button>
+            </div>
+            <div style="padding:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Code</label>
+                        <input type="text" id="newCouponCode" class="settings-input" placeholder="e.g. SUMMER20">
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="newCouponType" class="settings-input">
+                            <option value="percentage">Percentage (%)</option>
+                            <option value="fixed">Fixed (€)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Value</label>
+                        <input type="number" id="newCouponValue" class="settings-input" placeholder="e.g. 20" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Max Uses (0 = unlimited)</label>
+                        <input type="number" id="newCouponMaxUses" class="settings-input" value="0" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Valid Until</label>
+                    <input type="datetime-local" id="newCouponExpiry" class="settings-input">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="newCouponDesc" class="settings-input" placeholder="Optional description">
+                </div>
+                <div id="couponModalMsg" style="display:none;"></div>
+                <div style="display:flex; gap:1rem;">
+                    <button class="admin-btn primary" onclick="createCoupon()">Create Code</button>
+                    <button class="admin-btn" onclick="closeCouponModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="admin-modal" id="confirmModal">
+        <div class="admin-modal-overlay"></div>
+        <div class="admin-modal-content" style="max-width:400px;">
+            <div class="admin-modal-header">
+                <h2 id="confirmTitle">Confirm</h2>
+            </div>
+            <div style="padding:1.5rem;">
+                <p id="confirmMessage" style="color:#9ca3af; margin-bottom:1.5rem;"></p>
+                <div style="display:flex; gap:1rem;">
+                    <button class="admin-btn danger" id="confirmYesBtn">Confirm</button>
+                    <button class="admin-btn" onclick="closeConfirmModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <!-- Admin Order Detail Modal -->
+    <div class="admin-modal" id="adminOrderDetailModal">
+        <div class="admin-modal-overlay" onclick="document.getElementById('adminOrderDetailModal').classList.remove('open')"></div>
+        <div class="admin-modal-box" style="max-width:500px;">
+            <div class="admin-modal-header">
+                <h2>Order Details</h2>
+                <button class="admin-modal-close" onclick="document.getElementById('adminOrderDetailModal').classList.remove('open')">✕</button>
+            </div>
+            <div id="adminOrderDetailContent" style="padding:0 1.5rem 1.5rem;"></div>
+        </div>
+    </div>
+
+    <!-- SERVICE MODAL (for Games, Accounts, Boosting, Coaching edits) -->
+    <div class="admin-modal" id="serviceModal">
+        <div class="admin-modal-overlay" onclick="closeServiceModal()"></div>
+        <div class="admin-modal-content" style="max-width:560px;">
+            <div class="admin-modal-header">
+                <h2 id="serviceModalTitle">Edit</h2>
+                <button class="admin-modal-close" onclick="closeServiceModal()">✕</button>
+            </div>
+            <div id="serviceModalBody" style="padding:1.5rem;"></div>
+        </div>
+    </div>
+
+    <!-- DELETE CONFIRM MODAL -->
+    <div class="admin-modal" id="deleteConfirmModal">
+        <div class="admin-modal-overlay" onclick="closeDeleteConfirm()"></div>
+        <div class="admin-modal-content" style="max-width:420px;">
+            <div class="admin-modal-header">
+                <h2>Confirm Delete</h2>
+                <button class="admin-modal-close" onclick="closeDeleteConfirm()">✕</button>
+            </div>
+            <div style="padding:1.5rem;">
+                <p id="deleteConfirmMsg" style="color:#d1d5db;margin-bottom:1.5rem;line-height:1.6;"></p>
+                <div style="display:flex;gap:0.75rem;">
+                    <button class="admin-btn danger" id="deleteConfirmBtn">Delete</button>
+                    <button class="admin-btn" onclick="closeDeleteConfirm()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    /* Server tabs */
+    .admin-server-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.5rem;
+        align-items: center;
+    }
+    .server-tab {
+        background: rgba(168,85,247,0.08);
+        border: 1px solid rgba(168,85,247,0.2);
+        border-radius: 0.5rem;
+        color: #9ca3af;
+        padding: 0.45rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .server-tab:hover { border-color: #a855f7; color: #fff; }
+    .server-tab.active { background: linear-gradient(135deg,#a855f7,#9333ea); border-color: #a855f7; color: #fff; }
+
+    /* Account type cards grid */
+    .account-types-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+    .account-type-card {
+        background: rgba(20,17,45,0.8);
+        border: 1px solid rgba(168,85,247,0.2);
+        border-radius: 1rem;
+        padding: 1.25rem;
+        transition: border-color 0.2s;
+    }
+    .account-type-card:hover { border-color: rgba(168,85,247,0.4); }
+    .account-type-card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    .account-type-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 0.6rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: rgba(168,85,247,0.1);
+    }
+    .account-type-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .account-type-title { font-weight: 700; color: #fff; font-size: 0.95rem; }
+    .account-type-server { font-size: 0.75rem; color: #6b7280; margin-top: 1px; }
+    .account-type-price { margin-left: auto; text-align: right; }
+    .account-type-price .price-main { font-size: 1.1rem; font-weight: 800; color: #a855f7; }
+    .account-type-price .price-sale { font-size: 0.78rem; color: #22c55e; }
+    .account-type-price .price-original { font-size: 0.78rem; color: #6b7280; text-decoration: line-through; }
+    .account-type-stock {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.2rem 0.6rem;
+        border-radius: 2rem;
+        margin-bottom: 1rem;
+    }
+    .stock-ok { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+    .stock-empty { background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+    .account-type-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .account-type-actions .admin-btn { flex: 1; justify-content: center; font-size: 0.8rem; padding: 0.4rem 0.75rem; }
+
+    /* Admin form in service modal */
+    #serviceModalBody .admin-form-group { margin-bottom: 0.85rem; }
+    #serviceModalBody .admin-form-group label { display: block; font-size: 0.78rem; color: #9ca3af; margin-bottom: 0.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    #serviceModalBody .admin-input { width: 100%; background: rgba(30,20,60,0.6); border: 1px solid rgba(168,85,247,0.2); border-radius: 0.5rem; color: #fff; padding: 0.6rem 0.85rem; font-size: 0.875rem; outline: none; }
+    #serviceModalBody .admin-input:focus { border-color: #a855f7; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    </style>
+
+</body>
+</html>

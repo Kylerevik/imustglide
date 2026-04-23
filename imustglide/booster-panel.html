@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="pics/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booster Panel - iMUSTGLIDE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/profile.css">
+    <link rel="stylesheet" href="css/pages/admin.css">
+    <style>
+        .order-card {
+            background: rgba(15,10,31,0.7);
+            border: 1px solid rgba(168,85,247,0.2);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .order-card:hover { border-color: rgba(168,85,247,0.5); transform: translateY(-2px); }
+        .order-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem; }
+        .order-card-number { font-size:0.85rem; font-weight:700; color:#a855f7; font-family:monospace; }
+        .order-card-date { font-size:0.78rem; color:#6b7280; }
+        .order-card-product { font-size:1rem; font-weight:700; color:#fff; margin-bottom:0.25rem; }
+        .order-card-customer { font-size:0.82rem; color:#9ca3af; margin-bottom:0.75rem; }
+        .order-card-detail { background:rgba(168,85,247,0.07); border:1px solid rgba(168,85,247,0.15); border-radius:0.5rem; padding:0.5rem 0.75rem; font-size:0.82rem; color:#d8b4fe; margin-bottom:0.75rem; }
+        .order-card-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; }
+        .order-card-price { font-size:1.1rem; font-weight:800; color:#a855f7; }
+        .order-card-actions { display:flex; gap:0.5rem; }
+        .claim-btn { background:linear-gradient(135deg,#a855f7,#7c3aed); border:none; color:#fff; padding:0.5rem 1.25rem; border-radius:0.6rem; font-weight:700; font-size:0.85rem; cursor:pointer; transition:opacity 0.2s; }
+        .claim-btn:hover { opacity:0.85; }
+        .claim-btn:disabled { opacity:0.4; cursor:not-allowed; }
+        .complete-btn { background:linear-gradient(135deg,#22c55e,#16a34a); border:none; color:#fff; padding:0.5rem 1.25rem; border-radius:0.6rem; font-weight:700; font-size:0.85rem; cursor:pointer; transition:opacity 0.2s; }
+        .complete-btn:hover { opacity:0.85; }
+        .empty-state { text-align:center; padding:4rem 2rem; color:#6b7280; }
+        .empty-state svg { margin-bottom:1rem; opacity:0.4; }
+        .empty-state h3 { color:#9ca3af; font-size:1.1rem; margin-bottom:0.5rem; }
+        .panel-tabs { display:flex; gap:0; border-bottom:1px solid rgba(168,85,247,0.15); margin-bottom:1.5rem; }
+        .panel-tab { background:none; border:none; border-bottom:2px solid transparent; color:#6b7280; padding:0.75rem 1.5rem; font-size:0.9rem; font-weight:600; cursor:pointer; transition:all 0.2s; margin-bottom:-1px; }
+        .panel-tab:hover { color:#a855f7; }
+        .panel-tab.active { color:#a855f7; border-bottom-color:#a855f7; }
+        .panel-tab-content { display:none; }
+        .panel-tab-content.active { display:block; }
+        .toast { position:fixed; bottom:2rem; right:2rem; background:rgba(15,10,31,0.95); border:1px solid rgba(168,85,247,0.4); border-radius:0.75rem; padding:1rem 1.5rem; color:#fff; font-weight:600; z-index:9999; transform:translateY(6rem); transition:transform 0.3s; max-width:320px; }
+        .toast.show { transform:translateY(0); }
+        .toast.success { border-color:rgba(34,197,94,0.4); }
+        .toast.error { border-color:rgba(239,68,68,0.4); }
+
+        /* Complete Confirm Modal */
+        .complete-modal-overlay {
+            position: fixed; inset: 0; z-index: 10000;
+            display: none; align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+        }
+        .complete-modal-overlay.open { display: flex; }
+        .complete-modal {
+            background: rgba(12,8,28,0.98);
+            border: 1px solid rgba(34,197,94,0.3);
+            border-radius: 1.25rem;
+            padding: 2.5rem 2rem;
+            max-width: 420px; width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 40px rgba(34,197,94,0.08);
+            animation: modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes modalIn {
+            from { opacity:0; transform:scale(0.85) translateY(20px); }
+            to   { opacity:1; transform:scale(1) translateY(0); }
+        }
+        .complete-modal-icon {
+            width: 72px; height: 72px;
+            background: rgba(34,197,94,0.12);
+            border: 2px solid rgba(34,197,94,0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .complete-modal h3 {
+            color: #fff; font-size: 1.3rem; font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .complete-modal p {
+            color: #9ca3af; font-size: 0.9rem; margin-bottom: 1.75rem; line-height: 1.5;
+        }
+        .complete-modal-order {
+            background: rgba(34,197,94,0.07);
+            border: 1px solid rgba(34,197,94,0.2);
+            border-radius: 0.6rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.82rem; color: #86efac;
+            font-family: monospace; font-weight: 700;
+            margin-bottom: 1.75rem;
+            display: inline-block;
+        }
+        .complete-modal-btns { display: flex; gap: 0.75rem; justify-content: center; }
+        .complete-modal-confirm {
+            background: linear-gradient(135deg,#22c55e,#16a34a);
+            border: none; color: #fff;
+            padding: 0.7rem 1.75rem;
+            border-radius: 0.65rem; font-weight: 700; font-size: 0.9rem;
+            cursor: pointer; transition: opacity 0.2s; min-width: 120px;
+        }
+        .complete-modal-confirm:hover { opacity: 0.88; }
+        .complete-modal-confirm:disabled { opacity: 0.5; cursor: not-allowed; }
+        .complete-modal-cancel {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12); color: #9ca3af;
+            padding: 0.7rem 1.75rem;
+            border-radius: 0.65rem; font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .complete-modal-cancel:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+        /* Return button */
+        .return-btn {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.3);
+            color: #fca5a5; padding: 0.4rem 0.9rem;
+            border-radius: 0.55rem; font-weight: 600; font-size: 0.78rem;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .return-btn:hover { background: rgba(239,68,68,0.22); border-color: rgba(239,68,68,0.5); }
+
+        /* Return modal */
+        .return-modal {
+            background: rgba(12,8,28,0.98);
+            border: 1px solid rgba(239,68,68,0.3);
+            border-radius: 1.25rem; padding: 2.5rem 2rem;
+            max-width: 420px; width: 90%; text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 40px rgba(239,68,68,0.06);
+            animation: modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .return-modal-icon {
+            width: 72px; height: 72px;
+            background: rgba(239,68,68,0.1); border: 2px solid rgba(239,68,68,0.3);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .return-modal h3 { color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .return-modal p  { color: #9ca3af; font-size: 0.9rem; margin-bottom: 1.75rem; line-height: 1.5; }
+        .return-modal-order {
+            background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);
+            border-radius: 0.6rem; padding: 0.5rem 1rem;
+            font-size: 0.82rem; color: #fca5a5;
+            font-family: monospace; font-weight: 700;
+            margin-bottom: 1.75rem; display: inline-block;
+        }
+        .return-modal-confirm {
+            background: linear-gradient(135deg,#ef4444,#dc2626);
+            border: none; color: #fff; padding: 0.7rem 1.75rem;
+            border-radius: 0.65rem; font-weight: 700; font-size: 0.9rem;
+            cursor: pointer; transition: opacity 0.2s; min-width: 120px;
+        }
+        .return-modal-confirm:hover { opacity: 0.88; }
+        .return-modal-confirm:disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body class="profile-body">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="pics/temp-logo.png" alt="iMUSTGLIDE">
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-label">Booster Panel</div>
+                <a href="#" class="nav-link active" data-page="dashboard">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#" class="nav-link" data-page="available">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.11-.31.18-.65.18-1a3 3 0 00-5.5-1.65l-.5.67-.5-.68A3 3 0 006 5c0 .35.07.69.18 1H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg></span>
+                    <span class="nav-text">Available Orders</span>
+                    <span class="nav-badge" id="availableBadge" style="display:none;background:#a855f7;color:#fff;font-size:0.65rem;font-weight:700;padding:0.1rem 0.4rem;border-radius:2rem;margin-left:auto;"></span>
+                </a>
+                <a href="#" class="nav-link" data-page="my-orders">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></span>
+                    <span class="nav-text">My Orders</span>
+                </a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-label">Account</div>
+                <a href="profile.html" class="nav-link">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span>
+                    <span class="nav-text">My Profile</span>
+                </a>
+            </div>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="sidebar-lock-btn" id="sidebarLockBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="lockIcon"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                <span class="lock-text">Lock</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="profile-main">
+
+        <!-- DASHBOARD -->
+        <div class="page-content active" id="page-dashboard">
+            <h1 class="page-greeting">Booster Panel ⚡</h1>
+
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.11-.31.18-.65.18-1a3 3 0 00-5.5-1.65l-.5.67-.5-.68A3 3 0 006 5c0 .35.07.69.18 1H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statAvailable">-</div>
+                        <div class="admin-stat-label">Available Orders</div>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statClaimed">-</div>
+                        <div class="admin-stat-label">Total Claimed</div>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statCompleted">-</div>
+                        <div class="admin-stat-label">Completed</div>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+                    <div class="admin-stat-info">
+                        <div class="admin-stat-value" id="statEarnings">-</div>
+                        <div class="admin-stat-label">Total Earnings</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active orders preview -->
+            <div class="dashboard-card" style="margin-top:2rem;">
+                <div class="card-header">
+                    <h3 class="card-title">My Active Orders</h3>
+                    <a href="#" class="view-details-link" onclick="showPage('my-orders');return false;">View All</a>
+                </div>
+                <div class="card-body" id="dashboardActiveOrders">
+                    <div style="text-align:center;color:#6b7280;padding:1.5rem;">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AVAILABLE ORDERS -->
+        <div class="page-content" id="page-available">
+            <div class="page-header-row">
+                <h1 class="page-title">Available Orders</h1>
+                <button class="admin-btn primary" onclick="loadAvailableOrders()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                    Refresh
+                </button>
+            </div>
+            <div id="availableOrdersList">
+                <div class="empty-state"><div style="color:#6b7280">Loading...</div></div>
+            </div>
+        </div>
+
+        <!-- MY ORDERS -->
+        <div class="page-content" id="page-my-orders">
+            <div class="page-header-row">
+                <h1 class="page-title">My Orders</h1>
+                <button class="admin-btn primary" onclick="loadMyOrders()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                    Refresh
+                </button>
+            </div>
+            <div id="myOrdersList">
+                <div class="empty-state"><div style="color:#6b7280">Loading...</div></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Complete Confirm Modal -->
+    <div class="complete-modal-overlay" id="completeModalOverlay">
+        <div class="complete-modal">
+            <div class="complete-modal-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="#22c55e"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3>Mark as Completed?</h3>
+            <p>Are you sure you've finished this order? The customer will be notified and the order will be closed.</p>
+            <div class="complete-modal-order" id="completeModalOrderNum"></div>
+            <div class="complete-modal-btns">
+                <button class="complete-modal-cancel" onclick="closeCompleteModal()">Cancel</button>
+                <button class="complete-modal-confirm" id="completeModalConfirmBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;vertical-align:-2px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Yes, Complete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Return Order Modal -->
+    <div class="complete-modal-overlay" id="returnModalOverlay">
+        <div class="return-modal">
+            <div class="return-modal-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="#ef4444"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+            </div>
+            <h3>Return this Order?</h3>
+            <p>The order will be returned to the available pool and set back to <strong style="color:#fde047;">Pending</strong>. Another booster will be able to claim it.</p>
+            <div class="return-modal-order" id="returnModalOrderNum"></div>
+            <div class="complete-modal-btns">
+                <button class="complete-modal-cancel" onclick="closeReturnModal()">Cancel</button>
+                <button class="return-modal-confirm" id="returnModalConfirmBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;vertical-align:-2px"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+                    Yes, Return It
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+    const API = 'api/booster_api.php';
+    let sidebarLocked = localStorage.getItem('sidebar-locked') === 'true';
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        // Session check
+        try {
+            const res  = await fetch('api/check_session.php');
+            const data = await res.json();
+            if (!data.logged_in || data.user.role?.toLowerCase() !== 'booster') {
+                window.location.href = 'index.html'; return;
+            }
+        } catch(e) { window.location.href = 'index.html'; return; }
+
+        initSidebar();
+        initNav();
+        loadStats();
+        loadAvailableOrders();
+        loadMyOrders();
+
+        // Auto-refresh every 30s
+        setInterval(() => { loadStats(); loadAvailableOrders(); loadMyOrders(); }, 30000);
+    });
+
+    function initSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const lockBtn = document.getElementById('sidebarLockBtn');
+        if (sidebarLocked) sidebar.classList.add('locked');
+        lockBtn.addEventListener('click', () => {
+            sidebarLocked = !sidebarLocked;
+            sidebar.classList.toggle('locked', sidebarLocked);
+            localStorage.setItem('sidebar-locked', sidebarLocked);
+        });
+    }
+
+    function initNav() {
+        document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+            link.addEventListener('click', e => { e.preventDefault(); showPage(link.dataset.page); });
+        });
+    }
+
+    function showPage(page) {
+        document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-' + page)?.classList.add('active');
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.page === page));
+        if (page === 'available') loadAvailableOrders();
+        if (page === 'my-orders') loadMyOrders();
+    }
+
+    async function loadStats() {
+        try {
+            const res  = await fetch(API + '?action=get_stats');
+            const data = await res.json();
+            if (!data.success) return;
+            document.getElementById('statAvailable').textContent = data.available;
+            document.getElementById('statClaimed').textContent   = data.claimed;
+            document.getElementById('statCompleted').textContent = data.completed;
+            document.getElementById('statEarnings').textContent  = '€' + parseFloat(data.earnings).toFixed(2);
+            const badge = document.getElementById('availableBadge');
+            if (data.available > 0) { badge.textContent = data.available; badge.style.display = 'inline'; }
+            else badge.style.display = 'none';
+        } catch(e) {}
+    }
+
+    async function loadAvailableOrders() {
+        const el = document.getElementById('availableOrdersList');
+        try {
+            const res  = await fetch(API + '?action=get_orders&filter=available');
+            const data = await res.json();
+            if (!data.success || !data.orders.length) {
+                el.innerHTML = emptyState('🎮', 'No available orders', 'Check back soon — new boost orders will appear here.');
+                return;
+            }
+            el.innerHTML = data.orders.map(o => orderCard(o, 'available')).join('');
+        } catch(e) { el.innerHTML = '<div style="color:#ef4444;padding:1rem;">Error: ' + e.message + '</div>'; console.error(e); }
+    }
+
+    async function loadMyOrders() {
+        const el = document.getElementById('myOrdersList');
+        const dashEl = document.getElementById('dashboardActiveOrders');
+        try {
+            const res  = await fetch(API + '?action=get_orders&filter=mine');
+            const data = await res.json();
+            if (!data.success || !data.orders.length) {
+                el.innerHTML = emptyState('📋', 'No orders yet', 'Claim an available order to get started!');
+                if (dashEl) dashEl.innerHTML = '<div style="color:#6b7280;padding:1rem;text-align:center;">No active orders</div>';
+                return;
+            }
+            el.innerHTML = data.orders.map(o => orderCard(o, 'mine')).join('');
+            // Dashboard preview: csak processing
+            const active = data.orders.filter(o => o.status === 'processing');
+            if (dashEl) {
+                dashEl.innerHTML = active.length
+                    ? active.slice(0,3).map(o => orderCard(o, 'mine')).join('')
+                    : '<div style="color:#6b7280;padding:1rem;text-align:center;">No active orders in progress</div>';
+            }
+        } catch(e) { el.innerHTML = '<div style="color:#ef4444;padding:1rem;">Error: ' + e.message + '</div>'; console.error(e); }
+    }
+
+    function orderCard(o, mode) {
+        const detail = o.boost_detail_parsed ? formatDetail(o.boost_detail_parsed) : '';
+        const statusBadge = `<span class="status-badge status-${o.status}">${o.status}</span>`;
+        const actions = mode === 'available'
+            ? `<button class="claim-btn" onclick="claimOrder(${o.id}, this)">⚡ Claim Order</button>`
+            : o.status === 'processing'
+                ? `<button class="complete-btn" onclick="completeOrder(${o.id}, this, '${o.order_number}')">✅ Mark as Completed</button>
+                   <button class="return-btn" onclick="returnOrder(${o.id}, '${o.order_number}')">↩ Return</button>`
+                : statusBadge;
+
+        return `
+        <div class="order-card" id="order-${o.id}">
+            <div class="order-card-header">
+                <span class="order-card-number">${o.order_number}</span>
+                <div style="display:flex;gap:0.5rem;align-items:center;">
+                    ${statusBadge}
+                    <span class="order-card-date">${formatDate(o.created_at)}</span>
+                </div>
+            </div>
+            <div class="order-card-product">${o.product_name || 'Boost Order'}</div>
+            <div class="order-card-customer">👤 ${o.customer_name} · ${o.customer_email_display}</div>
+            ${detail ? `<div class="order-card-detail">🎮 ${detail}</div>` : ''}
+            <div class="order-card-footer">
+                <span class="order-card-price">${o.currency_symbol}${parseFloat(o.total_amount).toFixed(2)}</span>
+                <div class="order-card-actions">${actions}</div>
+            </div>
+        </div>`;
+    }
+
+    function formatDetail(detail) {
+        if (!detail || typeof detail !== 'object') return '';
+        const parts = [];
+        if (detail.detail) return detail.detail;
+        if (detail.from)   parts.push('From: ' + detail.from);
+        if (detail.to)     parts.push('To: '   + detail.to);
+        if (detail.wins)   parts.push(detail.wins + ' wins');
+        return parts.join(' · ');
+    }
+
+    async function claimOrder(orderId, btn) {
+        btn.disabled = true; btn.textContent = '⏳ Claiming...';
+        try {
+            const res  = await fetch(API + '?action=claim_order', {
+                method: 'POST', headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({order_id: orderId})
+            });
+            const data = await res.json();
+            if (data.success) {
+                showToast(data.message, 'success');
+                document.getElementById('order-' + orderId)?.remove();
+                loadMyOrders(); loadStats();
+            } else {
+                showToast(data.message, 'error');
+                btn.disabled = false; btn.textContent = '⚡ Claim Order';
+            }
+        } catch(e) { showToast('Connection error', 'error'); btn.disabled = false; btn.textContent = '⚡ Claim Order'; }
+    }
+
+    let _pendingCompleteId  = null;
+    let _pendingCompleteBtn = null;
+
+    function openCompleteModal(orderId, btn, orderNum) {
+        _pendingCompleteId  = orderId;
+        _pendingCompleteBtn = btn;
+        document.getElementById('completeModalOrderNum').textContent = orderNum || ('Order #' + orderId);
+        document.getElementById('completeModalConfirmBtn').disabled = false;
+        document.getElementById('completeModalConfirmBtn').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;vertical-align:-2px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Yes, Complete';
+        document.getElementById('completeModalOverlay').classList.add('open');
+    }
+
+    function closeCompleteModal() {
+        document.getElementById('completeModalOverlay').classList.remove('open');
+        _pendingCompleteId  = null;
+        _pendingCompleteBtn = null;
+    }
+
+    document.getElementById('completeModalConfirmBtn').addEventListener('click', async function() {
+        if (!_pendingCompleteId) return;
+        const btn = this;
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Completing...';
+        try {
+            const res  = await fetch(API + '?action=complete_order', {
+                method: 'POST', headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({order_id: _pendingCompleteId})
+            });
+            const data = await res.json();
+            closeCompleteModal();
+            if (data.success) {
+                showToast(data.message, 'success');
+                loadMyOrders(); loadStats();
+            } else {
+                showToast(data.message, 'error');
+                if (_pendingCompleteBtn) { _pendingCompleteBtn.disabled = false; _pendingCompleteBtn.textContent = '✅ Mark as Completed'; }
+            }
+        } catch(e) {
+            closeCompleteModal();
+            showToast('Connection error', 'error');
+        }
+    });
+
+    async function completeOrder(orderId, btn, orderNum) {
+        openCompleteModal(orderId, btn, orderNum);
+    }
+
+    // ── RETURN ORDER ──────────────────────────────
+    let _pendingReturnId = null;
+
+    function returnOrder(orderId, orderNum) {
+        _pendingReturnId = orderId;
+        document.getElementById('returnModalOrderNum').textContent = orderNum || ('Order #' + orderId);
+        document.getElementById('returnModalConfirmBtn').disabled = false;
+        document.getElementById('returnModalConfirmBtn').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;vertical-align:-2px"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg> Yes, Return It';
+        document.getElementById('returnModalOverlay').classList.add('open');
+    }
+
+    function closeReturnModal() {
+        document.getElementById('returnModalOverlay').classList.remove('open');
+        _pendingReturnId = null;
+    }
+
+    document.getElementById('returnModalConfirmBtn').addEventListener('click', async function() {
+        if (!_pendingReturnId) return;
+        const btn = this;
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Returning...';
+        try {
+            const res  = await fetch(API + '?action=unclaim_order', {
+                method: 'POST', headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({order_id: _pendingReturnId})
+            });
+            const data = await res.json();
+            closeReturnModal();
+            if (data.success) {
+                showToast('Order returned to available pool ↩', 'success');
+                loadMyOrders(); loadAvailableOrders(); loadStats();
+            } else {
+                showToast(data.message, 'error');
+            }
+        } catch(e) {
+            closeReturnModal();
+            showToast('Connection error', 'error');
+        }
+    });
+
+    function emptyState(icon, title, sub) {
+        return `<div class="empty-state"><div style="font-size:3rem;margin-bottom:1rem;">${icon}</div><h3>${title}</h3><p>${sub}</p></div>`;
+    }
+
+    function formatDate(d) {
+        if (!d) return '-';
+        return new Date(d).toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    }
+
+    function showToast(msg, type='success') {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.className = 'toast ' + type + ' show';
+        setTimeout(() => t.classList.remove('show'), 3500);
+    }
+    </script>
+</body>
+</html>
