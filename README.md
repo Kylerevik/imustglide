@@ -161,11 +161,11 @@ imustglide/
 
 ## 👨‍💻 Team
 
-| Name | Role |
-|------|------|
-| Illés Gergely | Full-Stack Developer |
-| Märcz Tádé | Backend Developer |
-| Varga Máté | Frontend Developer |
+| Name | GitHub | Role |
+|------|--------|------|
+| Illés Gergely | [@Kylerevik](https://github.com/Kylerevik) | Full-Stack Developer |
+| Märcz Tádé | [@TurkTade](https://github.com/TurkTade) | Backend Developer |
+| Varga Máté | [@Varga](https://github.com/Varga) | Frontend Developer |
 
 **School:** Baranya Vármegyei SZC Radnóti Miklós Közgazdasági Technikum  
 **Year:** 2025/2026
