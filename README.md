@@ -164,8 +164,8 @@ imustglide/
 | Name | Role |
 |------|------|
 | Illés Gergely | Full-Stack Developer |
-| Märcz Tádé | Full-Stack Developer |
-| Varga Máté | Full-Stack Developer |
+| Märcz Tádé | Backend Developer |
+| Varga Máté | Frontend Developer |
 
 **School:** Baranya Vármegyei SZC Radnóti Miklós Közgazdasági Technikum  
 **Year:** 2025/2026
